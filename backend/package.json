@@ -1,0 +1,71 @@
+{
+    "name": "hugo-assignment",
+    "version": "1.0.0",
+    "description": "Hugo assignment",
+    "main": "main.js",
+    "license": "UNLICENSED",
+    "private": true,
+    "engines": {
+        "node": ">=10.8.0"
+    },
+    "dependencies": {
+        "ajv": "^6.5.0",
+        "http-errors": "^1.6.3",
+        "kcors": "^2.2.2",
+        "koa": "^2.5.1",
+        "koa-bodyparser": "^4.1.0",
+        "koa-compress": "^3.0.0",
+        "koa-helmet": "^4.0.0",
+        "koa-jwt": "^3.3.2",
+        "koa-router": "^7.4.0",
+        "lodash": "^4.17.10",
+        "longjohn": "^0.2.12",
+        "moment-timezone": "^0.5.17",
+        "node-fetch": "^2.1.2",
+        "normalize-url": "^2.0.1",
+        "sequelize": "4.37.7",
+        "sqlite3": "^4.0.7",
+        "uuid": "^3.2.1",
+        "uuid4": "^1.1.4"
+    },
+    "devDependencies": {
+        "eslint": "^4.19.1",
+        "eslint-config-airbnb-base": "^12.1.0",
+        "eslint-config-prettier": "^2.9.0",
+        "eslint-plugin-import": "^2.12.0",
+        "eslint-plugin-jest": "^21.15.1",
+        "eslint-plugin-node": "^6.0.1",
+        "eslint-plugin-prettier": "^2.6.0",
+        "jest": "^24.7.1",
+        "jest-junit-reporter": "^1.1.0",
+        "jest-snapshot": "^22.4.3",
+        "mockdate": "^2.0.2",
+        "nodemon": "^1.18.11",
+        "prettier": "^1.12.1",
+        "sequelize-cli": "^4.0.0",
+        "supertest": "^3.1.0"
+    },
+    "scripts": {
+        "lint": "yarn run eslint .",
+        "test": "node scripts/test.js",
+        "start": "yarn run nodemon main.js",
+        "migrate": "yarn sequelize db:migrate --config config/sequelize.json --env local",
+        "seed": "yarn sequelize db:seed:all --config config/sequelize.json --env local",
+        "create-migration": "yarn sequelize migration:create --config config/sequelize.json"
+    },
+    "jest": {
+        "testEnvironment": "node",
+        "testResultsProcessor": "./node_modules/jest-junit-reporter",
+        "setupFiles": [
+            "./test/setup.js"
+        ],
+        "testPathIgnorePatterns": [
+            "<rootDir>[/\\\\](scripts|node_modules)[/\\\\]"
+        ]
+    },
+    "prettier": {
+        "printWidth": 100,
+        "tabWidth": 4,
+        "singleQuote": true
+    }
+}

@@ -1,0 +1,23 @@
+# dependencies
+/node_modules
+/env
+
+# testing
+/coverage
+test-report.xml
+
+# misc
+.idea
+.vscode
+.DS_Store
+.*.swp
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.orig
+
+# redis
+dump.rdb
+
+# logs
+app.log
