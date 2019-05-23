@@ -16,6 +16,6 @@ services:
     build:
       context: backend
     volumes:
-      - "./backend/:/backend"
+      - "./backend/:/app"
     ports:
       - "3000:3000"
