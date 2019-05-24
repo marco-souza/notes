@@ -47,5 +47,5 @@ async function createMeetingNote({ text }, params) {
 
 module.exports = {
     getMeetings,
-    createMeetingNote,
+    createMeetingNote
 };

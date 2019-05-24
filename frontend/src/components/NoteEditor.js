@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'material-ui/FloatingActionButton';
-import { HtmlEditor, MenuBar } from '@aeaton/react-prosemirror'
-import { options, menu } from '@aeaton/react-prosemirror-config-default'
+import { HtmlEditor, MenuBar } from '@aeaton/react-prosemirror';
+import { options, menu } from '@aeaton/react-prosemirror-config-default';
 
 const styles = {
     container: {
@@ -38,10 +38,7 @@ export default function NoteEditor() {
                     </div>
                 )}
             />
-
-            <Button style={styles.button} >
-                Save
-            </Button>
+            <Button style={styles.button}>Save</Button>
         </div>
     );
 }
