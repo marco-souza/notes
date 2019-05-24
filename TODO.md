@@ -2,7 +2,7 @@
 
 ## Frontend
 
-- [ ] Display the meeting start time at the current time zone.
+- [ X ] Display the meeting start time at the current time zone.
 - [ ] Allow the user to click on a meeting, which shows a raw text editor.
 - [ ] Allow the user to write raw text and save it.
 - [ ] Display the notes of the meeting. Feel free to use Material UI components where necessary.
