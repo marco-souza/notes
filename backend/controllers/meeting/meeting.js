@@ -3,16 +3,29 @@ const { Meeting, Note } = require('../../models');
 /**
  * Get the list of meetings from the DB.
  * @public
+ * @param {object} body - request body
+ * @param {object} params - request params
+ * @param {object} ctx - koa context
  * @returns {Promise<Array<Object>>} The list of meetings.
  */
-async function getMeetings() {
+async function getMeetings(body, params, ctx) {
+    const { sort_date: sortOrder, limit } = ctx.query;
+
+    // Define sort
+    // TODO: validate order passed
+    const order = sortOrder && [['startAt', sortOrder]];
+
+    // Include notes
+    const include = [
+        {
+            model: Note
+        }
+    ];
+
     const meetings = await Meeting.findAll({
-        include: [
-            {
-                model: Note,
-                required: true
-            }
-        ]
+        include,
+        order,
+        limit
     });
     return meetings;
 }

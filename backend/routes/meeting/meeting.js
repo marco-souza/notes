@@ -6,7 +6,7 @@ const { getMeetings, createMeetingNote } = require('../../controllers');
 
 const router = KoaRouter();
 
-router.get('/', http(() => getMeetings()));
+router.get('/', http(getMeetings));
 router.post('/:id/notes', http(createMeetingNote));
 
 module.exports = router;
