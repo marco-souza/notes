@@ -11,6 +11,22 @@ async function getMeetings() {
 }
 
 /**
+ * List meeting notes.
+ * @public
+ * @param {object} body - ignore body
+ * @param {object} params - request params
+ * @returns {Promise<Array<Object>>} List of notes.
+ */
+async function listMeetingNotes(body, params) {
+    const note = await Note.findAll({
+        where: {
+            meetingId: params.id
+        }
+    });
+    return note;
+}
+
+/**
  * Create a note related to a meeting.
  * @public
  * @param {object} body - request body
@@ -28,4 +44,5 @@ async function createMeetingNote({ text }, params) {
 module.exports = {
     getMeetings,
     createMeetingNote,
+    listMeetingNotes,
 };
