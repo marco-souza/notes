@@ -15,9 +15,10 @@
   ---
 
 ## Backend
-  
-- [ ] Serve an unauthenticaded HTTP API to create notes against meetings.
-- [ ] Sort meetings by start date.
+
+- [x] Serve an unauthenticaded HTTP API to list meetings and its notes. ✅
+- [x] Serve an unauthenticaded HTTP API to create notes against meetings.
+- [x] Sort meetings by start date.
 
 - Requirements
   - [ ] Use `yarn` for dependency management.
