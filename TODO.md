@@ -19,7 +19,7 @@
 - [X] Serve an unauthenticaded HTTP API to list meetings and its notes. ✅
 - [X] Serve an unauthenticaded HTTP API to create notes against meetings.
 - [X] Sort meetings by start date.
-- [ ] Deal with Cors and containers 
+- [x] Deal with Cors and containers
 
 - Requirements
   - [X] Use `yarn` for dependency management.
