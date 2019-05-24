@@ -1,41 +1,41 @@
 const uuid4 = require('uuid4');
 
-const generateMeetingsAndNotes = () => {
-    const listData = Array(5).fill(true);
-    return listData.map(() => {
-        const meetingId = uuid4();
-        const meeting = {
-            id: meetingId,
-            createdAt: new Date(),
-            updatedAt: new Date(),
-            title: 'Standup',
-            startAt: new Date()
-        };
-        const note = {
-            meetingId,
-            createdAt: new Date(),
-            updatedAt: new Date()
-        };
+const generateMeetingsAndNotes = (numMeetings = 5, numNotes = 3) =>
+    Array(numMeetings)
+        .fill(true)
+        .map(() => {
+            const meetingId = uuid4();
+            const meeting = {
+                id: meetingId,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+                title: 'Standup',
+                startAt: new Date()
+            };
+            const note = {
+                meetingId,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            };
 
-        const notes = Array(5)
-            .fill(true)
-            .map((_, i) => ({
-                ...note,
-                text: `bla ${i}`,
-                id: uuid4()
-            }));
+            const notes = Array(numNotes)
+                .fill(true)
+                .map((_, i) => ({
+                    ...note,
+                    text: `bla ${i}`,
+                    id: uuid4()
+                }));
 
-        return {
-            meeting,
-            notes
-        };
-    });
-};
+            return {
+                meeting,
+                notes
+            };
+        });
 
 module.exports = {
     up: queryInterface =>
         queryInterface.sequelize.transaction(async transaction => {
-            const seeds = generateMeetingsAndNotes();
+            const seeds = generateMeetingsAndNotes(10);
 
             const meetings = seeds.map(item => item.meeting);
             console.log('Seed meetings');
