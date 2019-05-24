@@ -3,11 +3,10 @@ FROM node:11-alpine
 
 ENV NODE_ENV=development
 
-RUN mkdir app
 WORKDIR /app
+
+CMD ["yarn", "start"]
 
 COPY . /app
 
 RUN yarn
-
-CMD ["yarn", "start"]
