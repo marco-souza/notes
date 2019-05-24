@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Immutable from 'immutable';
 import { connect } from 'react-redux';
 import { List } from 'material-ui';
-import { MeetingListItem, NoteEditor } from '../../components';
+import { MeetingListItem } from '../../components';
 import { fetchMeetings } from '../../ducks';
 import { getMeetings } from '../../selectors';
 
@@ -29,8 +29,6 @@ class MeetingsList extends Component {
                         <MeetingListItem key={meeting.id} meeting={meeting} onClick={() => {}} />
                     ))}
                 </List>
-
-                <NoteEditor />
             </div>
         );
     }
