@@ -3,9 +3,15 @@ import PropTypes from 'prop-types';
 import Immutable from 'immutable';
 import { connect } from 'react-redux';
 import { List } from 'material-ui';
-import { MeetingListItem } from '../../components';
+import { MeetingListItem, NoteEditor } from '../../components';
 import { fetchMeetings } from '../../ducks';
 import { getMeetings } from '../../selectors';
+
+const styles = {
+    container: {
+        display: 'flex'
+    }
+};
 
 class MeetingsList extends Component {
     componentDidMount() {
@@ -16,11 +22,16 @@ class MeetingsList extends Component {
     render() {
         const { meetings } = this.props;
         return (
-            <List style={{ width: 300 }}>
-                {meetings.map(meeting => (
-                    <MeetingListItem key={meeting.id} meeting={meeting} onClick={() => {}} />
-                ))}
-            </List>
+            <div style={styles.container}>
+                <List style={{ width: 300 }}>
+                    {/* TODO add icon to view note list */}
+                    {meetings.map(meeting => (
+                        <MeetingListItem key={meeting.id} meeting={meeting} onClick={() => {}} />
+                    ))}
+                </List>
+
+                <NoteEditor />
+            </div>
         );
     }
 }
