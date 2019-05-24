@@ -10,7 +10,8 @@ export default class MeetingListItem extends Component {
     }
 
     parseDateToLocalTimezone(date) {
-        date.setTime(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
+        const TZ_OFFSET = date.getTimezoneOffset() * 60 * 1000;
+        date.setTime(date.getTime() + TZ_OFFSET);
         return date.toISOString();
     }
 
