@@ -9,6 +9,11 @@ export default class MeetingListItem extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
+    parseDateToLocalTimezone(date) {
+        date.setTime(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
+        return date.toISOString();
+    }
+
     handleClick() {
         const { meeting, onClick } = this.props;
         onClick(meeting.id);
@@ -21,7 +26,7 @@ export default class MeetingListItem extends Component {
             <ListItem
                 onClick={this.handleClick}
                 primaryText={meeting.title}
-                secondaryText={meeting.startAt.toISOString()}
+                secondaryText={this.parseDateToLocalTimezone(meeting.startAt)}
             />
         );
     }
