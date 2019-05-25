@@ -4,7 +4,8 @@ export default class Meeting extends Record({
     id: null,
     title: null,
     startAt: null,
-    createdAt: null
+    createdAt: null,
+    notes: null
 }) {
     constructor(json = {}) {
         const properties = {
