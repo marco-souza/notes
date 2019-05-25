@@ -17,7 +17,7 @@ const styles = {
         margin: 20
     },
 
-    list: (width = 250) => ({
+    list: width => ({
         width
     })
 };
@@ -38,10 +38,14 @@ function SideBar(props) {
 }
 
 SideBar.propTypes = {
-    width: PropTypes.number.isRequired,
+    width: PropTypes.number,
     title: PropTypes.string.isRequired,
-    children: PropTypes.array.isRequired,
+    children: PropTypes.node.isRequired,
     rightSide: PropTypes.node.isRequired
+};
+
+SideBar.defaultProps = {
+    width: 250
 };
 
 export default SideBar;
