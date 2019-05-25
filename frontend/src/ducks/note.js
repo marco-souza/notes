@@ -16,7 +16,8 @@ export default handleActions(
     {
         [setNotesVisibility]: (state, { payload }) => ({
             ...state,
-            isVisible: payload
+            isVisible: payload,
+            editingNote: null
         }),
 
         [setNotes]: (state, { payload }) => ({
