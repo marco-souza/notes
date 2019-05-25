@@ -2,7 +2,7 @@ import Immutable from 'immutable';
 import { createAction, handleActions } from 'redux-actions';
 import { Note } from '../models';
 
-export const setVisibility = createAction('SET_VISIBILITY');
+export const setNotesVisibility = createAction('SET_NOTES_VISIBILITY');
 export const setNotes = createAction('SET_NOTES');
 export const setEditingNote = createAction('SET_EDITING_NOTE');
 
@@ -14,7 +14,7 @@ const INITIAL_STATE = {
 
 export default handleActions(
     {
-        [setVisibility]: (state, { payload }) => ({
+        [setNotesVisibility]: (state, { payload }) => ({
             ...state,
             isVisible: payload
         }),
