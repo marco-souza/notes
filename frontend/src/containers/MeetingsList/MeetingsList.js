@@ -9,26 +9,36 @@ import { getMeetings, getNotes } from '../../selectors';
 
 
 class MeetingsList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected: null
+        };
+    }
+
     componentDidMount() {
         const { onFetchMeetings } = this.props;
         onFetchMeetings();
     }
 
-    handleClick(notes) {
+    handleClick({ id, notes }) {
         const { onSetNotesVisibility, onSetNotes } = this.props;
         onSetNotes(notes);
         onSetNotesVisibility(true);
+        this.setState({ selected: id });
     }
 
     render() {
         const { meetings } = this.props;
+        const { selected } = this.state;
         return (
             <SideBar title="Meetings" rightSide={<NotesList />}>
                 {meetings.map(meeting => (
                     <MeetingListItem
+                        isSelected={selected === meeting.id}
                         key={meeting.id}
                         meeting={meeting}
-                        onClick={() => this.handleClick(meeting.notes)}
+                        onClick={() => this.handleClick(meeting)}
                     />
                 ))}
             </SideBar>

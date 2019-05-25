@@ -4,6 +4,12 @@ import moment from 'moment';
 import { ListItem } from 'material-ui';
 import { Meeting } from '../models';
 
+const styles = {
+    selected: {
+        background: 'rgba(0, 0, 0, 0.15)'
+    }
+};
+
 export default class MeetingListItem extends Component {
     constructor(props) {
         super(props);
@@ -27,19 +33,23 @@ export default class MeetingListItem extends Component {
     }
 
     render() {
-        const { meeting } = this.props;
+        const { meeting, isSelected } = this.props;
+        console.log(meeting.id, isSelected);
 
         return (
-            <ListItem
-                onClick={this.handleClick}
-                primaryText={meeting.title}
-                secondaryText={this.state.secondaryText}
-            />
+            <div style={isSelected ? styles.selected : null}>
+                <ListItem
+                    onClick={this.handleClick}
+                    primaryText={meeting.title}
+                    secondaryText={this.state.secondaryText}
+                />
+            </div>
         );
     }
 }
 
 MeetingListItem.propTypes = {
+    isSelected: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,
     meeting: PropTypes.instanceOf(Meeting).isRequired
 };
