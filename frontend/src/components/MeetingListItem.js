@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import { ListItem } from 'material-ui';
 import { Meeting } from '../models';
 
@@ -17,7 +18,7 @@ export default class MeetingListItem extends Component {
     parseDateToLocalTimezone(date) {
         const TZ_OFFSET = date.getTimezoneOffset() * 60 * 1000;
         date.setTime(date.getTime() + TZ_OFFSET);
-        return date.toISOString();
+        return moment(date.toISOString()).fromNow();
     }
 
     handleClick() {
