@@ -7,6 +7,11 @@ export default class MeetingListItem extends Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
+        this.state = {
+            secondaryText: this.parseDateToLocalTimezone(
+                props.meeting.updatedAt || props.meeting.createdAt
+            )
+        };
     }
 
     parseDateToLocalTimezone(date) {
@@ -27,7 +32,7 @@ export default class MeetingListItem extends Component {
             <ListItem
                 onClick={this.handleClick}
                 primaryText={meeting.title}
-                secondaryText={this.parseDateToLocalTimezone(meeting.startAt)}
+                secondaryText={this.state.secondaryText}
             />
         );
     }
