@@ -8,7 +8,7 @@
 - [X] Display the notes of the meeting. Feel free to use Material UI components where necessary.
 - [ ] Add Note button
 - [ ] Add Meeting button
-- [ ] Selected itens
+- [x] Selected itens
 - [ ] Pass values to text editor
 - [ ] Edit save button stile
 - [ ] Create zero fucking state
