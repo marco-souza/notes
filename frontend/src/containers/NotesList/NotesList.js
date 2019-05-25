@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NoteListItem, NoteEditor, SideBar } from '../../components';
@@ -8,11 +8,21 @@ import { getNotes } from '../../selectors';
 
 function NotesList(props) {
     const { notes, onSetEditingNote } = props;
+    const [selected, setSelected] = useState(null);
+    const handleClick = ({ id }) => {
+        onSetEditingNote(id);
+        setSelected(id);
+    };
 
     return !notes.isVisible ? null : (
         <SideBar title="Notes" rightSide={notes.editingNote && <NoteEditor />}>
             {notes.notes.map(note => (
-                <NoteListItem key={note.id} note={note} onClick={() => onSetEditingNote(note.id)} />
+                <NoteListItem
+                    isSelected={selected === note.id}
+                    key={note.id}
+                    note={note}
+                    onClick={() => handleClick(note)}
+                />
             ))}
         </SideBar>
     );
