@@ -7,7 +7,6 @@ import { NotesList } from '../index';
 import { fetchMeetings, setNotesVisibility, setNotes } from '../../ducks';
 import { getMeetings, getNotes } from '../../selectors';
 
-
 class MeetingsList extends Component {
     constructor(props) {
         super(props);

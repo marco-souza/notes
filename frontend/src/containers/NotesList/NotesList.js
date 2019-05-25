@@ -5,7 +5,6 @@ import { NoteListItem, NoteEditor, SideBar } from '../../components';
 import { setEditingNote } from '../../ducks';
 import { getNotes } from '../../selectors';
 
-
 function NotesList(props) {
     const { notes, onSetEditingNote } = props;
     const [selected, setSelected] = useState(null);

@@ -15,7 +15,7 @@ export default class NoteListItem extends Component {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.state = {
-            primaryText: this.parseDateToLocalTimezone(props.note.updatedAt || props.note.createdAt),
+            primaryText: this.parseDateToLocalTimezone(props.note.updatedAt || props.note.createdAt)
         };
     }
 
