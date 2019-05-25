@@ -13,17 +13,14 @@ const generateMeetingsAndNotes = (numMeetings = 20, numNotes = 10) =>
                 title: faker.company.companyName(),
                 startAt: faker.date.past()
             };
-            const note = {
-                meetingId,
-                createdAt: faker.date.past(),
-                updatedAt: faker.date.past()
-            };
 
             const notes = Array(faker.random.number(numNotes))
                 .fill(true)
                 .map(() => ({
-                    ...note,
+                    meetingId,
                     text: faker.lorem.paragraph(),
+                    createdAt: faker.date.past(),
+                    updatedAt: faker.date.past(),
                     id: uuid4()
                 }));
 
