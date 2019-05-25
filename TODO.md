@@ -3,9 +3,15 @@
 ## Frontend
 
 - [X] Display the meeting start time at the current time zone.
-- [ ] Allow the user to click on a meeting, which shows a raw text editor.
+- [X] Allow the user to click on a meeting, which shows a raw text editor.
 - [ ] Allow the user to write raw text and save it.
-- [ ] Display the notes of the meeting. Feel free to use Material UI components where necessary.
+- [X] Display the notes of the meeting. Feel free to use Material UI components where necessary.
+- [ ] Add Note button
+- [ ] Add Meeting button
+- [ ] Selected itens
+- [ ] Pass values to text editor
+- [ ] Edit save button stile
+- [ ] Create zero fucking state
 
 - Requirements
   - [X] Use `yarn` for dependency management.
@@ -20,6 +26,7 @@
 - [X] Serve an unauthenticaded HTTP API to create notes against meetings.
 - [X] Sort meetings by start date.
 - [x] Deal with Cors and containers
+- [ ] Add meeting
 
 - Requirements
   - [X] Use `yarn` for dependency management.
