@@ -42,7 +42,7 @@ module.exports = {
             });
 
             const notes = seeds.map(item => item.notes).reduce((acc, cur) => [...acc, ...cur], []);
-            console.log('Seed notes', notes);
+            console.log('Seed notes');
             await queryInterface.bulkInsert('note', notes, {
                 transaction
             });
