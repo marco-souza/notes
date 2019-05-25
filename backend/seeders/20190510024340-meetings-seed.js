@@ -1,28 +1,29 @@
 const uuid4 = require('uuid4');
+const faker = require('faker');
 
-const generateMeetingsAndNotes = (numMeetings = 5, numNotes = 3) =>
-    Array(numMeetings)
+const generateMeetingsAndNotes = (numMeetings = 20, numNotes = 10) =>
+    Array(faker.random.number(numMeetings))
         .fill(true)
         .map(() => {
             const meetingId = uuid4();
             const meeting = {
                 id: meetingId,
-                createdAt: new Date(),
-                updatedAt: new Date(),
-                title: 'Standup',
-                startAt: new Date()
+                createdAt: faker.date.past(),
+                updatedAt: faker.date.past(),
+                title: faker.company.companyName(),
+                startAt: faker.date.past()
             };
             const note = {
                 meetingId,
-                createdAt: new Date(),
-                updatedAt: new Date()
+                createdAt: faker.date.past(),
+                updatedAt: faker.date.past()
             };
 
-            const notes = Array(numNotes)
+            const notes = Array(faker.random.number(numNotes))
                 .fill(true)
-                .map((_, i) => ({
+                .map(() => ({
                     ...note,
-                    text: `bla ${i}`,
+                    text: faker.lorem.paragraph(),
                     id: uuid4()
                 }));
 
@@ -44,7 +45,7 @@ module.exports = {
             });
 
             const notes = seeds.map(item => item.notes).reduce((acc, cur) => [...acc, ...cur], []);
-            console.log('Seed notes');
+            console.log('Seed notes', notes);
             await queryInterface.bulkInsert('note', notes, {
                 transaction
             });
