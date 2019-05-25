@@ -34,8 +34,6 @@ export default class MeetingListItem extends Component {
 
     render() {
         const { meeting, isSelected } = this.props;
-        console.log(meeting.id, isSelected);
-
         return (
             <div style={isSelected ? styles.selected : null}>
                 <ListItem
