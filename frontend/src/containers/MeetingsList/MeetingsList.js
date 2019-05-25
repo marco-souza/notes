@@ -2,17 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Immutable from 'immutable';
 import { connect } from 'react-redux';
-import { List } from 'material-ui';
-import { MeetingListItem } from '../../components';
+import { MeetingListItem, SideBar } from '../../components';
 import { NotesList } from '../index';
 import { fetchMeetings, setNotesVisibility, setNotes } from '../../ducks';
 import { getMeetings, getNotes } from '../../selectors';
 
-const styles = {
-    container: {
-        display: 'flex'
-    }
-};
 
 class MeetingsList extends Component {
     componentDidMount() {
@@ -29,19 +23,15 @@ class MeetingsList extends Component {
     render() {
         const { meetings } = this.props;
         return (
-            <div style={styles.container}>
-                <List style={{ width: 300 }}>
-                    {/* TODO add icon to view note list */}
-                    {meetings.map(meeting => (
-                        <MeetingListItem
-                            key={meeting.id}
-                            meeting={meeting}
-                            onClick={() => this.handleClick(meeting.notes)}
-                        />
-                    ))}
-                </List>
-                <NotesList />
-            </div>
+            <SideBar title="Meetings" rightSide={<NotesList />}>
+                {meetings.map(meeting => (
+                    <MeetingListItem
+                        key={meeting.id}
+                        meeting={meeting}
+                        onClick={() => this.handleClick(meeting.notes)}
+                    />
+                ))}
+            </SideBar>
         );
     }
 }
