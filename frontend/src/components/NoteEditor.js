@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Button from 'material-ui/FloatingActionButton';
 import { HtmlEditor, MenuBar } from '@aeaton/react-prosemirror';
 import { options, menu } from '@aeaton/react-prosemirror-config-default';
@@ -21,16 +22,14 @@ const styles = {
     }
 };
 
-export default function NoteEditor() {
-    const [value, setValue] = useState('');
-
+export default function NoteEditor({ value, onChange }) {
     return (
         <div style={styles.container}>
             <HtmlEditor
                 autoFocus
                 options={options}
                 value={value}
-                onChange={setValue}
+                onChange={onChange}
                 render={({ editor, view }) => (
                     <div style={styles.editor}>
                         <MenuBar menu={menu} view={view} />
@@ -42,3 +41,8 @@ export default function NoteEditor() {
         </div>
     );
 }
+
+NoteEditor.propTypes = {
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired
+};
