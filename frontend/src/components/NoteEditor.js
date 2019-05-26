@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/FloatingActionButton';
-import { HtmlEditor, MenuBar } from '@aeaton/react-prosemirror';
-import { options, menu } from '@aeaton/react-prosemirror-config-default';
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 const styles = {
     container: {
         margin: 20
-    },
-    editor: {
-        height: 300
     },
     button: {
         position: 'fixed',
@@ -25,24 +22,13 @@ const styles = {
 export default function NoteEditor({ value, onChange }) {
     return (
         <div style={styles.container}>
-            <HtmlEditor
-                autoFocus
-                options={options}
-                value={value}
-                onChange={onChange}
-                render={({ editor, view }) => (
-                    <div style={styles.editor}>
-                        <MenuBar menu={menu} view={view} />
-                        {editor}
-                    </div>
-                )}
-            />
+            <Editor editorState={value} onEditorStateChange={onChange} />
             <Button style={styles.button}>Save</Button>
         </div>
     );
 }
 
 NoteEditor.propTypes = {
-    value: PropTypes.string.isRequired,
+    value: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired
 };
