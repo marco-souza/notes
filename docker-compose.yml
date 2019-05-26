@@ -8,10 +8,11 @@ services:
     ports:
       - "3001:3001"
     volumes:
-      - "./frontend/:/app"
+      - ./frontend/:/app/
       - /app/node_modules
     depends_on:
       - backend
+    command: sh -c 'yarn && yarn start'
 
   backend:
     build:
@@ -19,7 +20,7 @@ services:
     environment:
       - CORS_ORIGIN=http://0.0.0.0:3001
     volumes:
-      - "./backend/:/app"
+      - ./backend/:/app/
       - /app/node_modules
     ports:
       - "3000:3000"
