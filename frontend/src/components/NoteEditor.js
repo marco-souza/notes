@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/FloatingActionButton';
 import { Editor } from 'react-draft-wysiwyg';
@@ -20,9 +20,15 @@ const styles = {
 };
 
 export default function NoteEditor({ value, onChange }) {
+    let refEditor;
+    const setEditorFocus = ref => {
+        refEditor = ref;
+    };
+    useEffect(() => refEditor && refEditor.focusEditor(), [value]);
+
     return (
         <div style={styles.container}>
-            <Editor editorState={value} onEditorStateChange={onChange} />
+            <Editor editorState={value} ref={setEditorFocus} onEditorStateChange={onChange} />
             <Button style={styles.button}>Save</Button>
         </div>
     );
