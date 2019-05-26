@@ -10,7 +10,7 @@
 - [ ] Add Meeting button
 - [X] Selected itens
 - [X] Pass values to text editor
-- [ ] Change opened text
+- [X] Change opened text
 - [ ] Edit save button stile
 - [ ] Create zero fucking state
 
