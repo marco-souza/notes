@@ -2,18 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NoteEditor } from '../../components';
-import { setEditorValue } from '../../ducks';
+import { setEditorState } from '../../ducks';
 import { getEditor } from '../../selectors';
 
 function Editor(props) {
-    const { editor, onSetEditorValue } = props;
-
-    return <NoteEditor value={editor.value} onChange={onSetEditorValue} />;
+    const { editor, onSetEditorState } = props;
+    return <NoteEditor value={editor.value} onChange={onSetEditorState} />;
 }
 
 Editor.propTypes = {
     editor: PropTypes.object.isRequired,
-    onSetEditorValue: PropTypes.func.isRequired
+    onSetEditorState: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -25,7 +24,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         // Notes Actions
-        onSetEditorValue: text => dispatch(setEditorValue(text))
+        onSetEditorState: text => dispatch(setEditorState(text))
     };
 }
 
