@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { NoteListItem, SideBar } from '../../components';
+import { NoteListItem, NoteListAddItem, SideBar } from '../../components';
 import { Editor } from '../index';
 import { setEditingNote, setEditorValue } from '../../ducks';
 import { getNotes } from '../../selectors';
@@ -14,17 +14,25 @@ function NotesList(props) {
         onSetEditingNote(id);
         setSelected(id);
     };
+    const handleAddClick = () => {
+        onSetEditorValue('');
+        onSetEditingNote(true);
+        setSelected(null);
+    };
 
     return !notes.isVisible ? null : (
         <SideBar title="Notes" rightSide={notes.editingNote && <Editor />}>
-            {notes.notes.map(note => (
-                <NoteListItem
-                    isSelected={selected === note.id}
-                    key={note.id}
-                    note={note}
-                    onClick={() => handleClick(note)}
-                />
-            ))}
+            <NoteListAddItem addNewItem={handleAddClick} />
+
+            {notes.notes &&
+                notes.notes.map(note => (
+                    <NoteListItem
+                        isSelected={selected === note.id}
+                        key={note.id}
+                        note={note}
+                        onClick={() => handleClick(note)}
+                    />
+                ))}
         </SideBar>
     );
 }
