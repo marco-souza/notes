@@ -23,8 +23,8 @@
 
 ## Backend
 
-- [X] Serve an unauthenticaded HTTP API to list meetings and its notes. ✅
-- [X] Serve an unauthenticaded HTTP API to create notes against meetings.
+- [X] Serve an unauthenticated HTTP API to list meetings and its notes. ✅
+- [X] Serve an unauthenticated HTTP API to create notes against meetings.
 - [X] Sort meetings by start date.
 - [x] Deal with Cors and containers
 - [ ] Add meeting
