@@ -41,11 +41,12 @@ SideBar.propTypes = {
     width: PropTypes.number,
     title: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
-    rightSide: PropTypes.node.isRequired
+    rightSide: PropTypes.node
 };
 
 SideBar.defaultProps = {
-    width: 250
+    width: 250,
+    rightSide: null
 };
 
 export default SideBar;
