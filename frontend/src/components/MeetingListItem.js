@@ -15,9 +15,7 @@ export default class MeetingListItem extends Component {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.state = {
-            secondaryText: this.parseDateToLocalTimezone(
-                props.meeting.updatedAt || props.meeting.createdAt
-            )
+            secondaryText: this.parseDateToLocalTimezone(props.meeting.startAt)
         };
     }
 
