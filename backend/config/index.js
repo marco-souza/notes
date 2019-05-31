@@ -10,7 +10,7 @@ module.exports = {
     },
 
     cors: {
-        origin: process.env.CORS_ORIGIN || 'http://localhost:3002'
+        origin: process.env.CORS_ORIGIN || 'http://localhost:3001'
     },
 
     database: {
@@ -24,6 +24,6 @@ module.exports = {
     },
 
     webApp: {
-        url: process.env.WEB_APP_URL || 'http://localhost:3002'
+        url: process.env.WEB_APP_URL || 'http://localhost:3001'
     }
 };
