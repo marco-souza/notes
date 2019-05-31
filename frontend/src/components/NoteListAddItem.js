@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ListItem } from 'material-ui';
 
 function NoteListAddItem({ message, addNewItem, ...otherProps }) {
-    const primaryText = message || '+ Add new Note';
+    const primaryText = message;
     return <ListItem onClick={addNewItem} primaryText={primaryText} {...otherProps} />;
 }
 
@@ -13,7 +13,7 @@ NoteListAddItem.propTypes = {
 };
 
 NoteListAddItem.defaultProps = {
-    message: false
+    message: '+ Add new Note'
 };
 
 export default NoteListAddItem;
