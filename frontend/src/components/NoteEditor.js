@@ -4,6 +4,12 @@ import Button from 'material-ui/FloatingActionButton';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import theme from '../theme/muiTheme';
+
 const styles = {
     container: {
         margin: 20
@@ -11,11 +17,7 @@ const styles = {
     button: {
         position: 'fixed',
         right: 60,
-        bottom: 60,
-
-        '> button': {
-            backgroundColor: '#00384f'
-        }
+        bottom: 60
     }
 };
 
@@ -29,9 +31,12 @@ export default function NoteEditor({ value, onChange, onSave }) {
     return (
         <div style={styles.container}>
             <Editor editorState={value} ref={setEditorFocus} onEditorStateChange={onChange} />
-            <Button style={styles.button} onClick={onSave}>
-                Save
-            </Button>
+
+            <MuiThemeProvider theme={theme}>
+                <Fab color="primary" aria-label="Edit" style={styles.button} onClick={onSave}>
+                    <AddIcon />
+                </Fab>
+            </MuiThemeProvider>
         </div>
     );
 }
