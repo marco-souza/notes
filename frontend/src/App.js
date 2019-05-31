@@ -6,7 +6,8 @@ import { MeetingsList } from './containers';
 
 const styles = {
     appBar: {
-        backgroundColor: '#00384f'
+        backgroundColor: '#00384f',
+        boxShadow: '1px 0px 15px 1px'
     }
 };
 
