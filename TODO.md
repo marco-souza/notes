@@ -7,13 +7,19 @@
 - [x] Allow the user to write raw text
 - [X] Display the notes of the meeting. Feel free to use Material UI components where necessary.
 - [x] Add Note button
-- [ ] save notes
+- [x] save notes
 - [ ] * Add Meeting button
 - [X] Selected items
 - [X] Pass values to text editor
 - [X] Change opened text
-- [ ] Edit save button stile
+- [x] Edit save button stile
 - [x] Create zero fucking state
+- [ ] * tests
+- [ ] document
+  - [ ] MUI not updated
+  - [ ] first time working with saga
+  - [ ] first time working with koa
+  - [ ] The problem asks to return all notes with each meeting, which isn't a restful good practice
 
 - Requirements
   - [X] Use `yarn` for dependency management.
