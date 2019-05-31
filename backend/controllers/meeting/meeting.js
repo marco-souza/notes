@@ -37,11 +37,21 @@ async function getMeetings(body, params, ctx) {
  * @param {object} params - request params
  * @returns {Promise<Object>} Created item.
  */
-async function createMeetingNote({ text }, params) {
-    const note = await Note.create({
-        meetingId: params.id,
-        text
-    });
+async function createMeetingNote({ text, id } = {}, params) {
+    const note = await (!id
+        ? Note.create({
+              meetingId: params.id,
+              text
+          })
+        : Note.findOne({
+              where: {
+                  id
+              }
+          }).then(record =>
+              record.update({
+                  text
+              })
+          ));
     return note;
 }
 
