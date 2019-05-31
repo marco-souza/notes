@@ -19,7 +19,7 @@ const styles = {
     }
 };
 
-export default function NoteEditor({ value, onChange }) {
+export default function NoteEditor({ value, onChange, onSave }) {
     let refEditor;
     const setEditorFocus = ref => {
         refEditor = ref;
@@ -29,12 +29,15 @@ export default function NoteEditor({ value, onChange }) {
     return (
         <div style={styles.container}>
             <Editor editorState={value} ref={setEditorFocus} onEditorStateChange={onChange} />
-            <Button style={styles.button}>Save</Button>
+            <Button style={styles.button} onClick={onSave}>
+                Save
+            </Button>
         </div>
     );
 }
 
 NoteEditor.propTypes = {
     value: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    onSave: PropTypes.func.isRequired
 };
