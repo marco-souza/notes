@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Button from 'material-ui/FloatingActionButton';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
+import SaveIcon from '@material-ui/icons/Save';
 
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import theme from '../theme/muiTheme';
@@ -34,7 +33,7 @@ export default function NoteEditor({ value, onChange, onSave }) {
 
             <MuiThemeProvider theme={theme}>
                 <Fab color="primary" aria-label="Edit" style={styles.button} onClick={onSave}>
-                    <AddIcon />
+                    <SaveIcon />
                 </Fab>
             </MuiThemeProvider>
         </div>
