@@ -16,6 +16,17 @@ const INITIAL_STATE = {
     editingNote: null
 };
 
+const getNewNotes = (notes, newNote) => {
+    const position = notes.map(note => note.id).indexOf(newNote.id);
+    const item = new Note(newNote);
+
+    if (position >= 0) {
+        return notes.map((note, i) => (i === position ? item : note));
+    }
+
+    return [item, ...notes];
+}
+
 export default handleActions(
     {
         [setNotesVisibility]: (state, { payload }) => ({
@@ -37,10 +48,7 @@ export default handleActions(
 
         [saveNoteCompleted]: (state, { payload }) => ({
             ...state,
-            notes: Immutable.List([
-                new Note(payload.note),
-                ...state.notes.map(note => new Note(note))
-            ]),
+            notes: getNewNotes(state.notes, payload.note),
             editingNote: payload.note.id
         })
     },
