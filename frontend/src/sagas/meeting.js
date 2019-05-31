@@ -1,5 +1,7 @@
-import { all, call, put, takeLatest, take } from 'redux-saga/effects';
-import { fetchMeetings, fetchMeetingsCompleted, saveNoteCompleted } from '../ducks';
+import { all, call, put, takeLatest, select } from 'redux-saga/effects';
+import { stateToHTML } from 'draft-js-export-html';
+
+import { fetchMeetings, fetchMeetingsCompleted, saveNote, saveNoteCompleted } from '../ducks';
 import { getMeetingsFromAPI, upsertNoteForMeetingsFromAPI } from '../api';
 import { getNotes, getEditor } from '../selectors';
 
@@ -12,13 +14,15 @@ function* fetchMeetingsSaga() {
     }
 }
 
-function* saveNoteForMeeting() {
+export function* saveNoteForMeeting() {
     try {
-        const { meetingId } = yield call(getNotes);
-        const { value } = yield call(getEditor);
-        // eslint-disable-next-line no-debugger
-        debugger;
-        const note = yield call(upsertNoteForMeetingsFromAPI, meetingId, value.toString());
+        const { meetingId, editingNote } = yield select(getNotes);
+        const { value } = yield select(getEditor);
+
+        const note = yield call(upsertNoteForMeetingsFromAPI, meetingId, {
+            text: stateToHTML(value.getCurrentContent()),
+            id: editingNote !== true ? editingNote : undefined
+        });
         yield put(saveNoteCompleted({ note }));
     } catch (error) {
         yield put(saveNoteCompleted(error));
@@ -26,5 +30,8 @@ function* saveNoteForMeeting() {
 }
 
 export default function* meetingSaga() {
-    yield all([takeLatest(fetchMeetings, fetchMeetingsSaga), take(saveNoteForMeeting)]);
+    yield all([
+        takeLatest(fetchMeetings, fetchMeetingsSaga),
+        takeLatest(saveNote, saveNoteForMeeting)
+    ]);
 }
