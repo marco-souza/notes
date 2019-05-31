@@ -37,7 +37,7 @@ async function getMeetings(body, params, ctx) {
  * @param {object} params - request params
  * @returns {Promise<Object>} Created item.
  */
-async function createMeetingNote({ text, id } = {}, params) {
+async function createOrUpdateMeetingNote({ text, id } = {}, params) {
     const note = await (!id
         ? Note.create({
               meetingId: params.id,
@@ -57,5 +57,5 @@ async function createMeetingNote({ text, id } = {}, params) {
 
 module.exports = {
     getMeetings,
-    createMeetingNote
+    createOrUpdateMeetingNote
 };
