@@ -7,7 +7,7 @@ WORKDIR /app
 
 COPY . /app
 
-CMD ["yarn", "&&", "yarn", "start"]
+CMD ["yarn", "start"]
 
 RUN apk update && \
     apk add sqlite && \
