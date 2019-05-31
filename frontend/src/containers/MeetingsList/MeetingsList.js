@@ -22,7 +22,7 @@ class MeetingsList extends Component {
 
     handleClick({ id, notes }) {
         const { onSetNotesVisibility, onSetNotes } = this.props;
-        onSetNotes(notes);
+        onSetNotes(notes, id);
         onSetNotesVisibility(true);
         this.setState({ selected: id });
     }
@@ -66,7 +66,7 @@ function mapDispatchToProps(dispatch) {
 
         // Notes Actions
         onSetNotesVisibility: isVisible => dispatch(setNotesVisibility(isVisible)),
-        onSetNotes: notes => dispatch(setNotes({ notes }))
+        onSetNotes: (notes, id) => dispatch(setNotes({ notes, id }))
     };
 }
 

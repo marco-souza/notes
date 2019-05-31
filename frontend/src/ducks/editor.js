@@ -6,6 +6,7 @@ export const setEditorState = createAction('SET_EDITOR_STATE');
 export const selectionToEnd = createAction('SELECTION_TO_END');
 
 const INITIAL_STATE = {
+    meetingId: null,
     value: EditorState.createEmpty()
 };
 

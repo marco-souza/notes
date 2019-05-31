@@ -9,11 +9,11 @@ const { Meeting, Note } = require('../../models');
  * @returns {Promise<Array<Object>>} The list of meetings.
  */
 async function getMeetings(body, params, ctx) {
-    const { sort_date: sortOrder, limit } = ctx.query;
+    const { sort_date: sortOrder = 'desc', limit } = ctx.query;
 
     // Define sort
     // TODO: validate order passed
-    const order = sortOrder && [['startAt', sortOrder]];
+    const order = [['startAt', sortOrder], [Note, 'createdAt', 'desc']];
 
     // Include notes
     const include = [
