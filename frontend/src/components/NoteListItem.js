@@ -30,6 +30,12 @@ export default class NoteListItem extends Component {
         onClick(note.id);
     }
 
+    stripHTML(html) {
+        const tmp = document.createElement('div');
+        tmp.innerHTML = html;
+        return tmp.textContent || tmp.innerText || '';
+    }
+
     render() {
         const { note, isSelected } = this.props;
 
@@ -38,7 +44,7 @@ export default class NoteListItem extends Component {
                 <ListItem
                     onClick={this.handleClick}
                     primaryText={this.state.primaryText}
-                    secondaryText={note.text}
+                    secondaryText={this.stripHTML(note.text)}
                 />
             </div>
         );
