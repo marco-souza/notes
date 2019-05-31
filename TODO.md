@@ -16,6 +16,7 @@
 - [x] Create zero fucking state
 - [ ] * tests
 - [ ] document
+  - [ ] add endpoint docs
   - [ ] MUI not updated
   - [ ] first time working with saga
   - [ ] first time working with koa
