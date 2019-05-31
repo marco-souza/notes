@@ -8,7 +8,6 @@ import { NoteEditor } from '../../components';
 import { setEditorState, setEditorValue, saveNote, fetchMeetings } from '../../ducks';
 import { getEditor } from '../../selectors';
 
-
 function Editor(props) {
     const { editor, onSetEditorValue, onSetEditorState, onSaveNote, onFetchMeetings } = props;
     const handleSave = () => {

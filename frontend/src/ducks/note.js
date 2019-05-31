@@ -25,7 +25,7 @@ const getNewNotes = (notes, newNote) => {
     }
 
     return [item, ...notes];
-}
+};
 
 export default handleActions(
     {
