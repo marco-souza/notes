@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "ajv": "^6.5.0",
+        "faker": "^4.1.0",
         "http-errors": "^1.6.3",
         "kcors": "^2.2.2",
         "koa": "^2.5.1",

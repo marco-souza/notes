@@ -2,43 +2,71 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Immutable from 'immutable';
 import { connect } from 'react-redux';
-import { List } from 'material-ui';
-import { MeetingListItem } from '../../components';
-import { fetchMeetings } from '../../ducks';
-import { getMeetings } from '../../selectors';
+import { MeetingListItem, SideBar } from '../../components';
+import { NotesList } from '../index';
+import { fetchMeetings, setNotesVisibility, setNotes } from '../../ducks';
+import { getMeetings, getNotes } from '../../selectors';
 
 class MeetingsList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected: null
+        };
+    }
+
     componentDidMount() {
         const { onFetchMeetings } = this.props;
         onFetchMeetings();
     }
 
+    handleClick({ id, notes }) {
+        const { onSetNotesVisibility, onSetNotes } = this.props;
+        onSetNotes(notes, id);
+        onSetNotesVisibility(true);
+        this.setState({ selected: id });
+    }
+
     render() {
         const { meetings } = this.props;
+        const { selected } = this.state;
         return (
-            <List style={{ width: 300 }}>
+            <SideBar title="Meetings" rightSide={<NotesList />}>
                 {meetings.map(meeting => (
-                    <MeetingListItem key={meeting.id} meeting={meeting} onClick={() => {}} />
+                    <MeetingListItem
+                        isSelected={selected === meeting.id}
+                        key={meeting.id}
+                        meeting={meeting}
+                        onClick={() => this.handleClick(meeting)}
+                    />
                 ))}
-            </List>
+            </SideBar>
         );
     }
 }
 
 MeetingsList.propTypes = {
     meetings: PropTypes.instanceOf(Immutable.List).isRequired,
-    onFetchMeetings: PropTypes.func.isRequired
+    onFetchMeetings: PropTypes.func.isRequired,
+    onSetNotesVisibility: PropTypes.func.isRequired,
+    onSetNotes: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
     return {
-        meetings: getMeetings(state)
+        meetings: getMeetings(state),
+        notes: getNotes(state)
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        onFetchMeetings: () => dispatch(fetchMeetings())
+        // Meetings Actions
+        onFetchMeetings: () => dispatch(fetchMeetings()),
+
+        // Notes Actions
+        onSetNotesVisibility: isVisible => dispatch(setNotesVisibility(isVisible)),
+        onSetNotes: (notes, id) => dispatch(setNotes({ notes, id }))
     };
 }
 

@@ -2,16 +2,15 @@ import { Record } from 'immutable';
 
 export default class Meeting extends Record({
     id: null,
-    title: null,
-    startAt: null,
+    text: null,
     createdAt: null,
-    notes: null
+    updatedAt: null
 }) {
     constructor(json = {}) {
         const properties = {
             ...json,
             createdAt: json.createdAt ? new Date(json.createdAt) : null,
-            startAt: json.startAt ? new Date(json.startAt) : null
+            updatedAt: json.updatedAt ? new Date(json.updatedAt) : null
         };
         super(properties);
     }
